@@ -19,7 +19,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 }
 
 dependencies {
-    implementation(project(":lib"))
+    implementation(project(":koog-sauce"))
     implementation(libs.kotlinx.serialization.json)
 
     // Logging

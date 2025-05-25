@@ -46,8 +46,8 @@ configure<MavenPublishBaseExtension> {
     pom {
         name.set(project.name)
         description.set(project.description)
-        url.set("https://github.com/yourusername/kotlin-kmp-library")
-        inceptionYear.set("2024")
+        url.set("https://github.com/kpavlov/koog-sauce")
+        inceptionYear.set("2025")
 
         licenses {
             license {
@@ -58,16 +58,16 @@ configure<MavenPublishBaseExtension> {
 
         developers {
             developer {
-                id = "yourusername"
-                name = "Your Name"
-                url = "https://github.com/yourusername"
+                id = "kpavlov"
+                name = "Konstantin Pavlov"
+                url = "https://github.com/kpavlov"
             }
         }
 
         scm {
-            connection.set("scm:git:git://github.com/yourusername/kotlin-kmp-library.git")
-            developerConnection.set("scm:git:ssh://github.com/yourusername/kotlin-kmp-library.git")
-            url.set("https://github.com/yourusername/kotlin-kmp-library")
+            connection.set("scm:git:git://github.com/kpavlov/koog-sauce.git")
+            developerConnection.set("scm:git:ssh://github.com/kpavlov/koog-sauce.git")
+            url.set("https://github.com/kpavlov/koog-sauce")
         }
     }
 }

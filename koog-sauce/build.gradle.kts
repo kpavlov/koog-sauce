@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.kover)
 }
 
-description = "Sample Kotlin Multiplatform Library"
+description = "Koog Sauce - A secret ingredient from The Chef."
 
 kotlin {
 
@@ -14,6 +14,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlinx.serialization.json)
+                implementation(libs.koog)
             }
         }
 
@@ -28,13 +29,21 @@ kotlin {
         jvmMain {
             dependencies {
                 // JVM-specific dependencies
-                runtimeOnly(libs.slf4j.simple)
+                implementation(libs.spring.ai.client.chat)
             }
         }
 
         jvmTest {
             dependencies {
                 implementation(libs.kotest.runner.junit5)
+                implementation(libs.mokksy.openai)
+                implementation(kotlin("test"))
+                implementation(libs.assertj.core)
+                implementation(libs.finchly)
+                implementation(libs.junit.jupiter.params)
+                implementation(libs.spring.ai.openai)
+                implementation(project.dependencies.platform(libs.spring.ai.bom))
+                runtimeOnly(libs.slf4j.simple)
             }
         }
     }
