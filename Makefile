@@ -37,7 +37,7 @@ clean:
 # Generate documentation
 .PHONY: doc
 doc:
-	./gradlew :lib:dokkaGeneratePublicationHtml
+	./gradlew dokkaGeneratePublicationHtml
 
 # Help
 .PHONY: help

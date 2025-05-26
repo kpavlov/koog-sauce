@@ -35,12 +35,12 @@ jobs:
         gradle-version: 8.14.1
 
     - name: Generate KDoc documentation
-      run: gradle clean :lib:dokkaGeneratePublicationHtml --no-daemon
+      run: gradle clean dokkaGeneratePublicationHtml --no-daemon
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: lib/build/dokka/html
+        path: koog-sauce/build/dokka/html
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
