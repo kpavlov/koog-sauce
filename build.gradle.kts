@@ -22,7 +22,7 @@ subprojects {
 }
 
 dependencies {
-    kover(project(":lib"))
+    kover(project(":koog-sauce"))
     kover(project(":examples"))
 }
 
@@ -37,7 +37,7 @@ kover {
         verify {
             rule {
                 bound {
-                    minValue = 30
+                    minValue = 80
                 }
             }
         }

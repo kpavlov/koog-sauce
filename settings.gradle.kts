@@ -1,6 +1,6 @@
-rootProject.name = "kotlin-kmp-library"
+rootProject.name = "koog-sauce"
 
 include(
-    ":lib",
+    ":koog-sauce",
     ":examples",
 )
