@@ -10,9 +10,10 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.reactive.asFlow
 import org.springframework.ai.chat.client.ChatClient
+import org.springframework.ai.chat.messages.AssistantMessage
 import org.springframework.ai.chat.messages.SystemMessage
+import org.springframework.ai.chat.messages.ToolResponseMessage
 import org.springframework.ai.chat.messages.UserMessage
-import org.springframework.ai.chat.prompt.ChatOptions
 
 /**
  * A client implementation for interacting with an AI language model via a chat-based API.
@@ -37,7 +38,7 @@ public class SpringAiLLMClient(
     ): List<Message.Response> {
         val chatResponse = prepareClientRequest(prompt, model)
             .call()
-            .chatResponse()!!
+            .chatResponse()
         val text = chatResponse.result.output.text!!
         return listOf(
             Message.Assistant(
@@ -64,29 +65,57 @@ public class SpringAiLLMClient(
         model: LLModel,
     ): ChatClient.ChatClientRequestSpec {
         val springAiMessages = prompt.messages.map {
-            when (it.role) {
-                Message.Role.System -> {
+            when (it) {
+                is Message.System -> {
                     SystemMessage(it.content)
                 }
 
-                Message.Role.User -> {
+                is Message.User -> {
                     UserMessage(it.content)
                 }
 
-                else -> {
-                    throw IllegalArgumentException("Unsupported message role: ${it.role}")
+                is Message.Assistant -> {
+                    AssistantMessage(it.content)
+                }
+
+                is Message.Tool.Call -> {
+                    AssistantMessage(
+                        "",
+                        emptyMap(),
+                        listOf(
+                            AssistantMessage.ToolCall(
+                                requireNotNull(it.id) { "Tool id is required" },
+                                "function",
+                                it.tool,
+                                it.content
+                            )
+                        )
+                    )
+                }
+
+                is Message.Tool.Result -> {
+                    ToolResponseMessage(
+                        listOf(
+                            ToolResponseMessage.ToolResponse(
+                                requireNotNull(it.id) { "Tool id is required" },
+                                it.tool,
+                                it.content
+                            )
+                        )
+                    )
                 }
             }
         }
-
-        return chatClient
-            .prompt()
-            .messages(springAiMessages)
-            .options(
-                ChatOptions
-                    .builder()
-                    .model(model.id)
-                    .build(),
-            )
     }
+    return chatClient
+    .prompt()
+    .messages(springAiMessages)
+    .options(
+    ChatOptions
+    .builder()
+    .model(model.id)
+    .build(),
+    )
+}
+
 }
