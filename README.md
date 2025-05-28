@@ -7,24 +7,19 @@
 
 [![Build](https://github.com/kpavlov/koog-sauce/actions/workflows/build.yml/badge.svg)](https://github.com/kpavlov/koog-sauce/actions/workflows/build.yml?branch=main)
 [![Documentation](https://img.shields.io/badge/Documentation-KDoc-blue)](https://kpavlov.github.io/koog-sauce/)
-[![Coverage](https://img.shields.io/badge/Coverage-30%25-yellow)](https://github.com/Kotlin/kotlinx-kover)
-    
+
 ![logo-256x256.png](docs/logo-256x256.png)
 
-**Koog-sauce** is an integration library that connects [Koog](https://github.com/koog-ai/koog) with [Spring AI](https://spring.io/projects/spring-ai). It provides a seamless way to use Spring AI's LLM clients with Koog's prompt engineering and agent framework.
-
-Crafted to integrate deeply but stay lightweight, Koog-sauce ties together these powerful frameworks, allowing you to leverage Spring AI's robust LLM client implementations while using Koog's intuitive DSL for prompt engineering.
+**Koog-sauce** is a missing ingredient that connects [Koog](https://github.com/koog-ai/koog) with other frameworks.
 
 ## Features
 
-- **Koog Spring AI Integration** - Seamless integration with Spring AI's ChatClient
+- **Spring AI Integration** - Provides a Koog's `SpringAiLLMClient`, which uses Spring AI's [ChatClient](https://docs.spring.io/spring-ai/reference/api/chatclient.html) under the hood.
 
 ## Requirements
 
-- JDK 21 or higher
+- JDK 17 or higher
 - Gradle 8.14.1 or higher
-- Koog library
-- Spring AI library
 
 ## Getting Started
 
