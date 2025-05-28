@@ -5,8 +5,6 @@ import ai.koog.prompt.llm.LLMCapability
 import ai.koog.prompt.llm.LLMProvider
 import ai.koog.prompt.llm.LLModel
 import ai.koog.prompt.message.Message
-import io.kotest.matchers.Matcher
-import io.kotest.matchers.MatcherResult
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.delay
@@ -144,9 +142,10 @@ internal class SpringOpenAiTest {
         userMessageContains(prompt.messages.first { it is Message.User }.content)
         requestBodyContains("What is the weather on Nassau?")
         requestBodyContains("It's sunny")
-        requestBody.add(requestBodyMatcher { it.messages.size == 7 })
-        requestBody.add(requestBodyMatcher(::toolCallsPredicate))
-        requestBody.add(requestBodyMatcher(::toolResultPredicate))
+        requestMatchesPredicate(::toolCallsPredicate)
+        requestMatchesPredicate { it.messages.size == 7 }
+        requestMatchesPredicate(::toolCallsPredicate)
+        requestMatchesPredicate(::toolResultPredicate)
     }
 
     private fun toolCallsPredicate(request: ChatCompletionRequest): Boolean {
@@ -188,16 +187,4 @@ internal class SpringOpenAiTest {
 
         return true
     }
-
-    private fun requestBodyMatcher(predicate: (ChatCompletionRequest) -> Boolean): Matcher<ChatCompletionRequest?> =
-        object : Matcher<ChatCompletionRequest?> {
-            override fun test(value: ChatCompletionRequest?): MatcherResult {
-                val passed = value != null && predicate(value!!)
-                return MatcherResult.Companion(
-                    passed,
-                    { "Request should satisfy predicate. Request: $value" },
-                    { "Request should not satisfy predicate. Request: $value" },
-                )
-            }
-        }
 }
