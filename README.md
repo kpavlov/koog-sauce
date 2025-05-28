@@ -35,7 +35,7 @@ Add the dependency to your build.gradle.kts file:
 ```kotlin
 dependencies {
     implementation("me.kpavlov:koog-sauce:0.1.0")
-    implementation("ai.koog:koog:0.1.0") // Koog library
+    implementation("ai.koog:koog:0.0.1") // Koog library
     implementation("org.springframework.ai:spring-ai-openai:1.0.0") // Spring AI OpenAI client
 }
 ```
