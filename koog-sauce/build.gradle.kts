@@ -8,13 +8,6 @@ plugins {
 
 description = "Koog Sauce - A secret ingredient from The Chef."
 
-java {
-    registerFeature("springAi") {
-        usingSourceSet(sourceSets.jvmMain.get())
-    }
-
-}
-
 kotlin {
 
     sourceSets {
