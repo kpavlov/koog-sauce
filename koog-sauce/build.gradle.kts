@@ -8,13 +8,20 @@ plugins {
 
 description = "Koog Sauce - A secret ingredient from The Chef."
 
+java {
+    registerFeature("springAi") {
+        usingSourceSet(sourceSets.jvmMain.get())
+    }
+
+}
+
 kotlin {
 
     sourceSets {
         commonMain {
             dependencies {
+                api(libs.koog)
                 implementation(libs.kotlinx.serialization.json)
-                implementation(libs.koog)
             }
         }
 
@@ -30,8 +37,7 @@ kotlin {
             dependencies {
                 // JVM-specific dependencies
                 implementation(libs.spring.ai.client.chat)
-                implementation(libs.kotlinx.coroutines.reactive)
-
+                api(libs.kotlinx.coroutines.reactive)
             }
         }
 
