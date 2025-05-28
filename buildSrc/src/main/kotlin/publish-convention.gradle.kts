@@ -61,6 +61,7 @@ configure<MavenPublishBaseExtension> {
                 id = "kpavlov"
                 name = "Konstantin Pavlov"
                 url = "https://github.com/kpavlov"
+                email = "mail@kpavlov.me"
             }
         }
 

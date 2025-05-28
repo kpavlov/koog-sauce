@@ -14,6 +14,7 @@ import org.springframework.ai.chat.messages.AssistantMessage
 import org.springframework.ai.chat.messages.SystemMessage
 import org.springframework.ai.chat.messages.ToolResponseMessage
 import org.springframework.ai.chat.messages.UserMessage
+import org.springframework.ai.chat.prompt.ChatOptions
 
 /**
  * A client implementation for interacting with an AI language model via a chat-based API.
@@ -36,9 +37,11 @@ public class SpringAiLLMClient(
         model: LLModel,
         tools: List<ToolDescriptor>
     ): List<Message.Response> {
-        val chatResponse = prepareClientRequest(prompt, model)
-            .call()
-            .chatResponse()
+        val chatResponse = requireNotNull(
+            prepareClientRequest(prompt, model)
+                .call()
+                .chatResponse()
+        ) { "Chat response must not be null" }
         val text = chatResponse.result.output.text!!
         return listOf(
             Message.Assistant(
@@ -106,16 +109,16 @@ public class SpringAiLLMClient(
                 }
             }
         }
+
+        return chatClient
+            .prompt()
+            .messages(springAiMessages)
+            .options(
+                ChatOptions
+                    .builder()
+                    .model(model.id)
+                    .build(),
+            )
     }
-    return chatClient
-    .prompt()
-    .messages(springAiMessages)
-    .options(
-    ChatOptions
-    .builder()
-    .model(model.id)
-    .build(),
-    )
-}
 
 }

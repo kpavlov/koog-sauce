@@ -22,7 +22,7 @@ lint:
 # Publish to Maven Local
 .PHONY: publish
 publish:
-	./gradlew publishToMavenLocal
+	./gradlew clean build check publishToMavenLocal
 
 # Run tests
 .PHONY: test
@@ -33,6 +33,10 @@ test:
 .PHONY: clean
 clean:
 	./gradlew clean
+
+.PHONY: pom
+pom:
+	./gradlew generatePomFileForJvmPublication
 
 # Generate documentation
 .PHONY: doc
@@ -47,6 +51,7 @@ help:
 	@echo "  build    - Build the project"
 	@echo "  format   - Format the code using Spotless"
 	@echo "  lint     - Run linting checks (Spotless, Detekt)"
+	@echo "  pom      - Generate Maven pom.xml file"
 	@echo "  publish  - Publish to Maven Local"
 	@echo "  test     - Run tests"
 	@echo "  clean    - Clean the project"

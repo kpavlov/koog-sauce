@@ -8,6 +8,8 @@
 [![Build](https://github.com/kpavlov/koog-sauce/actions/workflows/build.yml/badge.svg)](https://github.com/kpavlov/koog-sauce/actions/workflows/build.yml?branch=main)
 [![Documentation](https://img.shields.io/badge/Documentation-KDoc-blue)](https://kpavlov.github.io/koog-sauce/)
 [![Coverage](https://img.shields.io/badge/Coverage-30%25-yellow)](https://github.com/Kotlin/kotlinx-kover)
+    
+![logo-256x256.png](docs/logo-256x256.png)
 
 **Koog-sauce** is an integration library that connects [Koog](https://github.com/koog-ai/koog) with [Spring AI](https://spring.io/projects/spring-ai). It provides a seamless way to use Spring AI's LLM clients with Koog's prompt engineering and agent framework.
 
