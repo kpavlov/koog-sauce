@@ -5,10 +5,12 @@ import ai.koog.prompt.dsl.Prompt
 import ai.koog.prompt.executor.clients.LLMClient
 import ai.koog.prompt.llm.LLModel
 import ai.koog.prompt.message.Message
+import ai.koog.prompt.message.ResponseMetaInfo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.reactive.asFlow
+import kotlinx.datetime.Clock
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.messages.AssistantMessage
 import org.springframework.ai.chat.messages.SystemMessage
@@ -42,11 +44,14 @@ public class SpringAiLLMClient(
                 .call()
                 .chatResponse()
         ) { "Chat response must not be null" }
-        val text = chatResponse.result.output.text!!
+        val result = chatResponse.result
         return listOf(
             Message.Assistant(
-                content = text,
-                finishReason = chatResponse.result.metadata.finishReason
+                content = result.output.text!!,
+                finishReason = result.metadata.finishReason,
+                metaInfo = ResponseMetaInfo(
+                    timestamp = Clock.System.now(),
+                )
             )
         )
     }

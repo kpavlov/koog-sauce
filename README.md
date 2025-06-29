@@ -1,9 +1,9 @@
 # Koog-sauce — The Finishing Touch
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.1.21-blue.svg?logo=kotlin)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-2.2.0-blue.svg?logo=kotlin)](https://kotlinlang.org)
 [![Target JVM](https://img.shields.io/badge/Target%20JVM-17-green.svg)](https://jdk.java.net/17/)
-[![Gradle](https://img.shields.io/badge/Gradle-8.14.1-green.svg)](https://gradle.org)
+[![Gradle](https://img.shields.io/badge/Gradle-8.14.2-green.svg)](https://gradle.org)
 
 [![Build](https://github.com/kpavlov/koog-sauce/actions/workflows/build.yml/badge.svg)](https://github.com/kpavlov/koog-sauce/actions/workflows/build.yml?branch=main)
 [![Documentation](https://img.shields.io/badge/Documentation-KDoc-blue)](https://kpavlov.github.io/koog-sauce/)
@@ -29,8 +29,8 @@ Add the dependency to your build.gradle.kts file:
 
 ```kotlin
 dependencies {
-    implementation("me.kpavlov:koog-sauce:0.1.0")
-    implementation("ai.koog:koog:0.0.1") // Koog library
+    implementation("me.kpavlov:koog-sauce:[LATEST]")
+    implementation("ai.koog:koog:0.2.1") // Koog library
     implementation("org.springframework.ai:spring-ai-openai:1.0.0") // Spring AI OpenAI client
 }
 ```
@@ -133,7 +133,7 @@ make doc
 
 The documentation is automatically generated and published to GitHub Pages when changes are pushed to the main branch. You can access the latest documentation at:
 
-https://kpavlov.github.io/koog-sauce/`
+https://kpavlov.github.io/koog-sauce/
 
 ## License
 

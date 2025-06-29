@@ -50,36 +50,28 @@ internal class SpringOpenAiTest {
             assistant("I need to know what the weather will be like on Nassau")
             tool {
                 call(
-                    Message.Tool.Call(
-                        id = "weather",
-                        tool = "get_weather",
-                        "What is the weather on Nassau?"
-                    )
+                    id = "weather",
+                    tool = "get_weather",
+                    "What is the weather on Nassau?"
                 )
                 call(
-                    Message.Tool.Call(
-                        id = "time",
-                        tool = "get_time",
-                        "What time is it in Nassau now?"
-                    )
+                    id = "time",
+                    tool = "get_time",
+                    "What time is it in Nassau now?"
                 )
             }
             tool {
                 result(
-                    Message.Tool.Result(
-                        id = "weather",
-                        tool = "get_weather",
-                        "It's sunny"
-                    )
+                    id = "weather",
+                    tool = "get_weather",
+                    "It's sunny"
                 )
             }
             tool {
                 result(
-                    Message.Tool.Result(
-                        id = "time",
-                        tool = "get_time",
-                        "It's 9:42AM"
-                    )
+                    id = "time",
+                    tool = "get_time",
+                    "It's 9:42AM"
                 )
             }
         }
@@ -155,14 +147,14 @@ internal class SpringOpenAiTest {
             message.toolCalls?.isNotEmpty() == true
         }.map { it.toolCalls!! }.flatten()
 
-        toolCalls.firstOrNull() {
+        toolCalls.firstOrNull {
             it.id == "weather" &&
                 it.type == "function" &&
                 it.function.name == "get_weather" &&
                 it.function.arguments == "What is the weather on Nassau?"
         } ?: return false
 
-        toolCalls.firstOrNull() {
+        toolCalls.firstOrNull {
             it.id == "time" &&
                 it.type == "function" &&
                 it.function.name == "get_time" &&
@@ -177,11 +169,11 @@ internal class SpringOpenAiTest {
             message.role == ChatCompletionRole.TOOL
         }
 
-        toolResults.firstOrNull() {
+        toolResults.firstOrNull {
             it.content == "It's sunny"
         } ?: return false
 
-        toolResults.firstOrNull() {
+        toolResults.firstOrNull {
             it.content == "It's 9:42AM"
         } ?: return false
 
