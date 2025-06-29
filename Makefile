@@ -7,7 +7,7 @@ all: build
 # Build the project
 .PHONY: build
 build:
-	./gradlew build
+	./gradlew build test
 
 # Format the code
 .PHONY: format
