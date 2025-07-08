@@ -15,7 +15,7 @@ mockk = "1.14.4"
 nexus-publish = "2.0.0"
 spring-ai = "1.0.0"
 slf4j = "2.0.17"
-spotless = "7.0.4"
+spotless = "7.1.0"
 
 [libraries]
 # Testing
