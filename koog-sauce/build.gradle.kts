@@ -31,6 +31,8 @@ kotlin {
                 // JVM-specific dependencies
                 implementation(libs.spring.ai.client.chat)
                 api(libs.kotlinx.coroutines.reactive)
+                api(project.dependencies.platform(libs.langchain4j.bom))
+                api(libs.langchain4j.kotlin)
             }
         }
 
@@ -45,6 +47,7 @@ kotlin {
                 implementation(libs.spring.ai.openai)
                 implementation(project.dependencies.platform(libs.spring.ai.bom))
                 runtimeOnly(libs.slf4j.simple)
+                implementation(libs.langchain4j.openai)
             }
         }
     }

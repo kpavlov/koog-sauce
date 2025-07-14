@@ -10,6 +10,7 @@ kotlin = "2.1.21"
 kotlinx-serialization = "1.9.0"
 kotlinx-coroutines = "1.10.2"
 kover = "0.9.1"
+langchain4j = "1.1.0"
 mokksy = "0.4.4"
 mockk = "1.14.4"
 nexus-publish = "2.0.0"
@@ -18,27 +19,25 @@ slf4j = "2.0.17"
 spotless = "7.1.0"
 
 [libraries]
-# Testing
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
 finchly = { module = "me.kpavlov.finchly:finchly", version.ref = "finchly" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
+koog = { module = "ai.koog:koog-agents", version.ref = "koog" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotlinx-coroutines-reactive = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive", version.ref = "kotlinx-coroutines" }
-koog = { module = "ai.koog:koog-agents", version.ref = "koog" }
-mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
-spring-ai-bom = { group = "org.springframework.ai", name = "spring-ai-bom", version.ref = "spring-ai" }
-spring-ai-openai = { group = "org.springframework.ai", name = "spring-ai-openai" }
-spring-ai-core = { group = "org.springframework.ai", name = "spring-ai-core" }
-mokksy-openai = { group = "me.kpavlov.aimocks", name = "ai-mocks-openai", version.ref = "mokksy" }
-spring-ai-client-chat = { group = "org.springframework.ai", name = "spring-ai-client-chat", version.ref = "spring-ai" }
-spring-ai-gemini = { group = "org.springframework.ai", name = "spring-ai-vertex-ai-gemini" }
-slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
-
-# Serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+langchain4j-bom = { group = "dev.langchain4j", name = "langchain4j-bom", version.ref = "langchain4j" }
+langchain4j-kotlin = { group = "dev.langchain4j", name = "langchain4j-kotlin" }
+langchain4j-openai = { group = "dev.langchain4j", name = "langchain4j-open-ai" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mokksy-openai = { group = "me.kpavlov.aimocks", name = "ai-mocks-openai", version.ref = "mokksy" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+spring-ai-bom = { group = "org.springframework.ai", name = "spring-ai-bom", version.ref = "spring-ai" }
+spring-ai-client-chat = { group = "org.springframework.ai", name = "spring-ai-client-chat", version.ref = "spring-ai" }
+spring-ai-core = { group = "org.springframework.ai", name = "spring-ai-core" }
+spring-ai-gemini = { group = "org.springframework.ai", name = "spring-ai-vertex-ai-gemini" }
+spring-ai-openai = { group = "org.springframework.ai", name = "spring-ai-openai" }
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
