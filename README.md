@@ -103,6 +103,8 @@ suspend fun executePrompt() {
 }
 ```
 
+See the [complete example](examples/src/main/kotlin/me/kpavlov/koog/sauce/examples/SpringAiExample.kt).
+
 ### LangChain4j Integration
 
 ```kotlin
@@ -134,6 +136,9 @@ suspend fun executePrompt() {
     println("Response: ${responses.first().content}")
 }
 ```
+
+See the [complete example](examples/src/main/kotlin/me/kpavlov/koog/sauce/examples/LangChain4jAIAgentExample.kt).   
+
 
 ### AI Agent Builder
 
@@ -188,6 +193,17 @@ Or using the Makefile:
 ```bash
 make test
 ```
+
+### Integration Tests
+
+The project includes comprehensive tests for both Spring AI and LangChain4j integrations:
+
+- **Spring AI Tests**: `SpringOpenAiTest` demonstrates how to use and test the Spring AI integration with OpenAI models.
+- **LangChain4j Tests**: 
+  - `Langchain4jLLMClientTest` tests the standard LangChain4j LLM client functionality.
+  - `StreamingLangchain4jLLMClientTest` tests the streaming capabilities of the LangChain4j LLM client.
+
+These tests serve as additional examples of how to use the integrations in your own projects.
 
 ### Generating Documentation
 

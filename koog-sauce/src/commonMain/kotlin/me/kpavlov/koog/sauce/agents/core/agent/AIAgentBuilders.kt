@@ -16,6 +16,7 @@ public class AiAgentBuilder<I, O>(
     public var clock: Clock = Clock.System,
     public var installFeatures: FeatureContext.() -> Unit = {}
 ) {
+    @Suppress("UNCHECKED_CAST")
     public inline fun <reified Input, reified Output> build(): AIAgent<Input, Output> = AIAgent<Input, Output>(
         promptExecutor = requireNotNull(promptExecutor) { "PromptExecutor must be provided" },
         strategy = requireNotNull(strategy) { "Strategy must be provided" } as AIAgentStrategy<Input, Output>,
