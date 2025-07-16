@@ -10,7 +10,7 @@
 
 ![logo-256x256.png](docs/logo-256x256.png)
 
-**Koog-sauce** is a missing ingredient that connects [Koog](https://github.com/koog-ai/koog) with other frameworks.
+**Koog-sauce** is a missing ingredient that connects [Koog](https://github.com/JetBrains/koog) with other frameworks.
 
 ## Features
 
