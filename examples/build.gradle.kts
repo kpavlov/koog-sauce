@@ -20,6 +20,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 
 dependencies {
     implementation(project(":koog-sauce"))
+    implementation(project(":koog-sauce-langchain4j"))
+    implementation(project(":koog-sauce-spring-ai"))
     implementation(libs.kotlinx.serialization.json)
 
     // Logging
