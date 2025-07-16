@@ -1,13 +1,13 @@
-package me.kpavlov.koog.sauce.agents.core.agent.me.kpavlov.koog.sauce.agents.core.agent
+package me.kpavlov.koog.sauce.agents.core.agent
 
 import ai.koog.agents.core.agent.config.AIAgentConfig
+import ai.koog.agents.core.agent.singleRunStrategy
 import ai.koog.agents.core.tools.ToolRegistry
 import ai.koog.prompt.executor.model.PromptExecutor
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.mockk.mockk
 import kotlinx.datetime.Clock
-import me.kpavlov.koog.sauce.agents.core.agent.AIAgent
 import kotlin.test.Test
 
 class AIAgentBuildersTest {
@@ -19,9 +19,10 @@ class AIAgentBuildersTest {
         val registry = mockk<ToolRegistry>()
         val theClock = mockk<Clock>()
         // when
-        val agent = AIAgent {
+        val agent = AIAgent<String, String> {
             promptExecutor = executor
             agentConfig = config
+            strategy = singleRunStrategy()
             toolRegistry = registry
             clock = theClock
         }

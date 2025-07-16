@@ -2,7 +2,7 @@
 assertj = "3.27.3"
 detekt = "1.23.8"
 finchly = "0.1.1"
-koog = "0.2.1"
+koog = "0.3.0"
 dokka = "2.0.0"
 junit = "5.13.3"
 kotest = "5.9.1"

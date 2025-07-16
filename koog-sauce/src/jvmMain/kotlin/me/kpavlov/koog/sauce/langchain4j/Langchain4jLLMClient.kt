@@ -1,6 +1,7 @@
 package me.kpavlov.koog.sauce.langchain4j
 
 import ai.koog.agents.core.tools.ToolDescriptor
+import ai.koog.prompt.dsl.ModerationResult
 import ai.koog.prompt.dsl.Prompt
 import ai.koog.prompt.executor.clients.LLMClient
 import ai.koog.prompt.llm.LLModel
@@ -65,7 +66,14 @@ public class Langchain4jLLMClient(
         )
     }
 
-    override suspend fun executeStreaming(
+    override suspend fun moderate(
+        prompt: Prompt,
+        model: LLModel
+    ): ModerationResult {
+        TODO("Not yet implemented")
+    }
+
+    override fun executeStreaming(
         prompt: Prompt,
         model: LLModel
     ): Flow<String> {
