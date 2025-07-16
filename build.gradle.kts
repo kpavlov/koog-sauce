@@ -23,6 +23,8 @@ subprojects {
 
 dependencies {
     kover(project(":koog-sauce"))
+    kover(project(":koog-sauce-langchain4j"))
+    kover(project(":koog-sauce-spring-ai"))
     kover(project(":examples"))
 }
 
@@ -37,10 +39,9 @@ kover {
         verify {
             rule {
                 bound {
-                    minValue = 80
+                    minValue = 85
                 }
             }
         }
     }
 }
-
