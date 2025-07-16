@@ -1,6 +1,7 @@
 package me.kpavlov.koog.sauce.spring.ai.chat
 
 import ai.koog.agents.core.tools.ToolDescriptor
+import ai.koog.prompt.dsl.ModerationResult
 import ai.koog.prompt.dsl.Prompt
 import ai.koog.prompt.executor.clients.LLMClient
 import ai.koog.prompt.llm.LLModel
@@ -17,6 +18,7 @@ import org.springframework.ai.chat.messages.SystemMessage
 import org.springframework.ai.chat.messages.ToolResponseMessage
 import org.springframework.ai.chat.messages.UserMessage
 import org.springframework.ai.chat.prompt.ChatOptions
+import kotlin.collections.List
 
 /**
  * A client implementation for interacting with an AI language model via a chat-based API.
@@ -56,7 +58,14 @@ public class SpringAiLLMClient(
         )
     }
 
-    override suspend fun executeStreaming(
+    override suspend fun moderate(
+        prompt: Prompt,
+        model: LLModel
+    ): ModerationResult {
+        TODO("Not yet implemented")
+    }
+
+    override fun executeStreaming(
         prompt: Prompt,
         model: LLModel
     ): Flow<String> {
