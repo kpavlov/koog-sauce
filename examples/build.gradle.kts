@@ -24,8 +24,20 @@ dependencies {
     implementation(project(":koog-sauce-spring-ai"))
     implementation(libs.kotlinx.serialization.json)
 
+    // Environment variables from .env file
+    implementation(libs.finchly)
+
+    // LangChain4j dependencies
+    implementation(platform(libs.langchain4j.bom))
+    implementation(libs.langchain4j.kotlin)
+    implementation(libs.langchain4j.openai)
+
+    // Spring AI dependencies
+    implementation(platform(libs.spring.ai.bom))
+    implementation(libs.spring.ai.openai)
+
     // Logging
-    implementation(libs.slf4j.simple)
+    runtimeOnly(libs.slf4j.simple)
 
     // Testing
     testImplementation(kotlin("test"))
@@ -36,7 +48,9 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.example.library.examples.CalculatorExampleKt")
+    // You can change this to run different examples
+    // mainClass.set("me.kpavlov.koog.sauce.examples.LangChain4jAIAgentExampleKt")
+    mainClass.set("me.kpavlov.koog.sauce.examples.SpringAiExampleKt")
 }
 
 tasks.withType<JavaExec>().configureEach {

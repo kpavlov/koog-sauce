@@ -29,7 +29,7 @@ kotlin {
         jvmMain {
             dependencies {
                 // JVM-specific dependencies
-                implementation(libs.spring.ai.client.chat)
+                api(libs.spring.ai.client.chat)
                 api(libs.kotlinx.coroutines.reactive)
             }
         }
