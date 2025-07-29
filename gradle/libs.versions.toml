@@ -14,7 +14,7 @@ langchain4j = "1.1.0"
 mokksy = "0.4.6"
 mockk = "1.14.5"
 nexus-publish = "2.0.0"
-spring-ai = "1.0.0"
+spring-ai = "1.0.1"
 slf4j = "2.0.17"
 spotless = "7.1.0"
 
