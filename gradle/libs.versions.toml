@@ -16,7 +16,7 @@ mockk = "1.14.5"
 nexus-publish = "2.0.0"
 spring-ai = "1.0.1"
 slf4j = "2.0.17"
-spotless = "7.1.0"
+spotless = "7.2.1"
 
 [libraries]
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
