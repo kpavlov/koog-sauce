@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.kover)
 }
 
-description = "Koog Sauce Spring AI Integration - A secret ingredient from The Chef."
-
 kotlin {
 
     sourceSets {

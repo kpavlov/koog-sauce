@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.kover)
 }
 
-description = "Koog Sauce - A secret ingredient from The Chef."
-
 kotlin {
 
     sourceSets {

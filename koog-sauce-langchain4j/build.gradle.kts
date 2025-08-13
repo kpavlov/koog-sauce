@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.kover)
 }
 
-description = "Koog Sauce Langchain4j Integration - A secret ingredient from The Chef."
-
 kotlin {
 
     sourceSets {

@@ -10,6 +10,7 @@ kotlin = "2.1.21"
 kotlinx-serialization = "1.9.0"
 kotlinx-coroutines = "1.10.2"
 kover = "0.9.1"
+ktor = "3.2.3"
 langchain4j = "1.3.0"
 mokksy = "0.4.6"
 mockk = "1.14.5"
@@ -17,6 +18,7 @@ nexus-publish = "2.0.0"
 spring-ai = "1.0.1"
 slf4j = "2.0.17"
 spotless = "7.2.1"
+openai-kotlin = "4.0.1"
 
 [libraries]
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -25,7 +27,9 @@ junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", vers
 koog = { module = "ai.koog:koog-agents", version.ref = "koog" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-reactive = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 langchain4j-bom = { group = "dev.langchain4j", name = "langchain4j-bom", version.ref = "langchain4j" }
 langchain4j-kotlin = { group = "dev.langchain4j", name = "langchain4j-kotlin" }
@@ -38,6 +42,13 @@ spring-ai-client-chat = { group = "org.springframework.ai", name = "spring-ai-cl
 spring-ai-core = { group = "org.springframework.ai", name = "spring-ai-core" }
 spring-ai-gemini = { group = "org.springframework.ai", name = "spring-ai-vertex-ai-gemini" }
 spring-ai-openai = { group = "org.springframework.ai", name = "spring-ai-openai" }
+ktor-bom = { module = "io.ktor:ktor-bom", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json" }
+openai-client = { module = "com.aallam.openai:openai-client", version.ref = "openai-kotlin" }
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
