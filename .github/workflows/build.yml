@@ -6,9 +6,14 @@ on:
   pull_request:
     branches: [ main ]
 
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
+    timeout-minutes: 20
     strategy:
       matrix:
         java-version:
@@ -18,7 +23,7 @@ jobs:
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Set up JDK ${{ matrix.java-version }}
       uses: actions/setup-java@v4
@@ -31,6 +36,11 @@ jobs:
       uses: gradle/actions/setup-gradle@v4
       with:
         gradle-version: 8.14.3
+
+    - name: Select Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
 
     - name: Build with Gradle
       run: gradle build test koverXmlReport --no-daemon

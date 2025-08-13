@@ -4,5 +4,6 @@ include(
     ":koog-sauce",
     ":koog-sauce-langchain4j",
     ":koog-sauce-spring-ai",
+    ":koog-sauce-native",
     ":examples",
 )
