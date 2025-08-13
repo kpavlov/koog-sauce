@@ -4,8 +4,6 @@ plugins {
     alias(libs.plugins.kover)
 }
 
-description = "Examples for Kotlin Multiplatform Library"
-
 kotlin {
     jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
