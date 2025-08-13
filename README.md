@@ -104,7 +104,7 @@ suspend fun executePrompt() {
 }
 ```
 
-See the [complete example](examples/src/main/kotlin/me/kpavlov/koog/sauce/examples/SpringAiExample.kt).
+See the [complete example](examples/jvm/src/main/kotlin/me/kpavlov/koog/sauce/examples/SpringAiExample.kt).
 
 ### LangChain4j Integration
 
@@ -138,7 +138,7 @@ suspend fun executePrompt() {
 }
 ```
 
-See the [complete example](examples/src/main/kotlin/me/kpavlov/koog/sauce/examples/LangChain4jAIAgentExample.kt).   
+See the [complete example](examples/jvm/src/main/kotlin/me/kpavlov/koog/sauce/examples/LangChain4jAIAgentExample.kt).   
 
 
 ### AI Agent Builder
