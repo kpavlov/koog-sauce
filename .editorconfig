@@ -17,6 +17,9 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
+[*.swift]
+indent_size = 4
+
 [*.java]
 indent_size = 4
 ij_java_names_count_to_use_import_on_demand = 2147483647
