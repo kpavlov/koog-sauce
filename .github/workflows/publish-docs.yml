@@ -38,7 +38,7 @@ jobs:
       run: gradle clean dokkaGeneratePublicationHtml --no-daemon
 
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: koog-sauce/build/dokka/html
     - name: Deploy to GitHub Pages
