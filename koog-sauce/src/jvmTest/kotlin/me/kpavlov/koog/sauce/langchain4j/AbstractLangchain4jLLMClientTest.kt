@@ -13,9 +13,12 @@ internal abstract class AbstractLangchain4jLLMClientTest {
     protected lateinit var subject: Langchain4jLLMClient
 
     protected val model = LLModel(
-        LLMProvider.OpenAI, "gpt-4.1-mini", listOf(
+        provider = LLMProvider.OpenAI,
+        id="gpt-4.1-mini",
+        capabilities = listOf(
             LLMCapability.Completion,
-        )
+        ),
+        contextLength = 1000
     )
 
     @BeforeEach

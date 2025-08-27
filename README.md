@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.2.0-blue.svg?logo=kotlin)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kooog-0.4.0-blue.svg?logo=jetbrains)](https://koog.ai)
 [![Target JVM](https://img.shields.io/badge/Target%20JVM-17-green.svg)](https://jdk.java.net/17/)
 [![Gradle](https://img.shields.io/badge/Gradle-8.14.3-green.svg)](https://gradle.org)
 
@@ -45,7 +46,7 @@ dependencies {
     implementation("dev.langchain4j:langchain4j-open-ai:0.24.0")
 
     // Koog library
-    implementation("ai.koog:koog:0.3.0")
+    implementation("ai.koog:koog:0.4.0") // or newer
 }
 ```
 
@@ -91,7 +92,8 @@ val prompt = ai.koog.prompt.dsl.Prompt.build("myPrompt") {
 val model = ai.koog.prompt.llm.LLModel(
     ai.koog.prompt.llm.LLMProvider.OpenAI, 
     "gpt-4.1-nano", 
-    listOf(ai.koog.prompt.llm.LLMCapability.Completion)
+    listOf(ai.koog.prompt.llm.LLMCapability.Completion),
+    100500
 )
 
 // Execute the prompt
@@ -128,7 +130,8 @@ val prompt = ai.koog.prompt.dsl.Prompt.build("myPrompt") {
 val model = ai.koog.prompt.llm.LLModel(
     ai.koog.prompt.llm.LLMProvider.OpenAI, 
     "gpt-4", 
-    listOf(ai.koog.prompt.llm.LLMCapability.Completion)
+    listOf(ai.koog.prompt.llm.LLMCapability.Completion),
+    100500,
 )
 
 // Execute the prompt

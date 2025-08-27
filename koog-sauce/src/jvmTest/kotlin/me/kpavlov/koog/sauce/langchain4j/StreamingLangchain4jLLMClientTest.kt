@@ -3,16 +3,13 @@ package me.kpavlov.koog.sauce.langchain4j
 import ai.koog.prompt.llm.LLMCapability
 import ai.koog.prompt.llm.LLMProvider
 import ai.koog.prompt.llm.LLModel
-import dev.langchain4j.data.message.AiMessage
 import dev.langchain4j.data.message.AiMessage.aiMessage
 import dev.langchain4j.model.chat.ChatModel
 import dev.langchain4j.model.chat.StreamingChatModel
 import dev.langchain4j.model.chat.request.ChatRequest
 import dev.langchain4j.model.chat.response.ChatResponse
 import dev.langchain4j.model.chat.response.StreamingChatResponseHandler
-import dev.langchain4j.model.output.TokenUsage
 import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
@@ -45,9 +42,12 @@ internal class StreamingLangchain4jLLMClientTest : AbstractLangchain4jLLMClientT
     fun `Should execute stream completion request`() = runTest {
         // Given
         val model = LLModel(
-            LLMProvider.OpenAI, "gpt-4.1-nano", listOf(
+            provider = LLMProvider.OpenAI,
+            id = "gpt-4.1-nano",
+            capabilities = listOf(
                 LLMCapability.Completion,
-            )
+            ),
+            contextLength = 1000,
         )
 
         val responseText = "Response from Langchain4j"

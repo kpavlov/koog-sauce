@@ -25,8 +25,9 @@ tasks.withType<KotlinCompile>().configureEach {
         apiVersion = KOTLIN_2_1
         freeCompilerArgs =
             listOf(
+                "-Wextra",
+                "-Xexpect-actual-classes",
                 "-Xjvm-default=all",
-                "-Wextra"
             )
     }
 }

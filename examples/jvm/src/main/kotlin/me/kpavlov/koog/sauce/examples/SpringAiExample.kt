@@ -52,7 +52,8 @@ fun main() {
     val model = LLModel(
         provider = LLMProvider.OpenAI,
         id = modelName,
-        capabilities = listOf(LLMCapability.Completion)
+        capabilities = listOf(LLMCapability.Completion),
+        contextLength = 100500,
     )
 
     // Use the LLM client
