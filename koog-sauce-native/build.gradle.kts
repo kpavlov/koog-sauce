@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
+
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
 plugins {
@@ -10,6 +13,14 @@ plugins {
 }
 
 kotlin {
+
+    compilerOptions {
+        freeCompilerArgs =
+            listOf(
+                "-Wextra",
+                "-Xexpect-actual-classes",
+            )
+    }
 
     val xcf = XCFramework()
     listOf(

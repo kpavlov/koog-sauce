@@ -45,9 +45,12 @@ internal class StreamingLangchain4jLLMClientTest : AbstractLangchain4jLLMClientT
     fun `Should execute stream completion request`() = runTest {
         // Given
         val model = LLModel(
-            LLMProvider.OpenAI, "gpt-4.1-nano", listOf(
+            provider = LLMProvider.OpenAI,
+            id = "gpt-4.1-nano",
+            capabilities = listOf(
                 LLMCapability.Completion,
-            )
+            ),
+            contextLength = 1000,
         )
 
         val responseText = "Response from Langchain4j"

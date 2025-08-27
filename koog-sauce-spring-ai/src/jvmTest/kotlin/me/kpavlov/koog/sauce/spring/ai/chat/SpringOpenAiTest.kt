@@ -88,10 +88,14 @@ internal class SpringOpenAiTest {
         }
 
         val model = LLModel(
-            LLMProvider.OpenAI, "gpt-4.1-mini", listOf(
+            provider = LLMProvider.OpenAI,
+            id = "gpt-4.1-mini",
+            capabilities = listOf(
                 LLMCapability.Completion,
-            )
+            ),
+            contextLength = 1000,
         )
+
         // when
         val responses = subject.execute(prompt, model)
 
@@ -116,10 +120,14 @@ internal class SpringOpenAiTest {
         }
 
         val model = LLModel(
-            LLMProvider.OpenAI, "gpt-4.1-nano", listOf(
+            provider = LLMProvider.OpenAI,
+            id = "gpt-4.1-nano",
+            capabilities = listOf(
                 LLMCapability.Completion,
-            )
+            ),
+            contextLength = 1000,
         )
+
         // when
         val responseFlow = subject.executeStreaming(prompt, model)
 
