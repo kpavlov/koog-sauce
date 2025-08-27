@@ -9,7 +9,6 @@ on:
     inputs:
       runner:
         description: "Choose the runner to use"
-        required: true
         default: "ubuntu-latest"
         type: choice
         options:
