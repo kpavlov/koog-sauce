@@ -21,6 +21,7 @@ kotlin {
                 implementation(kotlin("test"))
                 implementation(libs.kotest.assertions.core)
                 implementation(libs.mockk)
+                implementation(libs.kotlinx.coroutines.test)
             }
         }
 
