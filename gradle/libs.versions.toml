@@ -1,5 +1,5 @@
 [versions]
-assertj = "3.27.5"
+assertj = "3.27.6"
 detekt = "1.23.8"
 finchly = "0.1.1"
 koog = "0.4.2"
