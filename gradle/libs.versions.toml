@@ -17,7 +17,7 @@ mockk = "1.14.6"
 nexus-publish = "2.0.0"
 spring-ai = "1.0.3"
 slf4j = "2.0.17"
-spotless = "8.0.0"
+spotless = "8.1.0"
 openai-kotlin = "4.0.1"
 
 [libraries]
