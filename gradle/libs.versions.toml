@@ -18,7 +18,7 @@ nexus-publish = "2.0.0"
 spring-ai = "1.0.3"
 slf4j = "2.0.17"
 spotless = "8.2.1"
-openai-kotlin = "4.0.1"
+openai-kotlin = "4.1.0"
 
 [libraries]
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
