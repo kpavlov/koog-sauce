@@ -74,6 +74,8 @@ internal class StreamingLangchain4jLLMClientTest : AbstractLangchain4jLLMClientT
 
         val resultList = flow.toList()
 
-        resultList.joinToString(separator = "").removeSuffix(" ") shouldBe responseText
+        resultList.filterIsInstance<ai.koog.prompt.streaming.StreamFrame.TextDelta>()
+            .joinToString(separator = "") { it.text }
+            .removeSuffix(" ") shouldBe responseText
     }
 }

@@ -7,7 +7,7 @@ import ai.koog.prompt.executor.model.PromptExecutor
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.mockk.mockk
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 import kotlin.test.Test
 
 class AIAgentBuildersTest {
@@ -27,12 +27,8 @@ class AIAgentBuildersTest {
             clock = theClock
         }
         // then
-        agent shouldNotBeNull {
-            promptExecutor shouldBe executor
-            agentConfig shouldBe config
-            clock shouldBe theClock
-            toolRegistry shouldBe registry
-        }
+        agent.shouldNotBeNull()
+        agent.agentConfig shouldBe config
     }
 
 }

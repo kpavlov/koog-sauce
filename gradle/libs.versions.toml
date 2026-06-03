@@ -12,10 +12,10 @@ kotlinx-coroutines = "1.11.0"
 kover = "0.9.8"
 ktor = "3.4.3"
 langchain4j = "1.14.1"
-mokksy = "0.5.0-RC1"
+ai-mocks = "0.8.2"
 mockk = "1.14.9"
 nexus-publish = "2.0.0"
-spring-ai = "1.0.3"
+spring-ai = "1.1.7"
 slf4j = "2.0.18"
 spotless = "8.4.0"
 openai-kotlin = "4.1.0"
@@ -35,7 +35,7 @@ langchain4j-bom = { group = "dev.langchain4j", name = "langchain4j-bom", version
 langchain4j-kotlin = { group = "dev.langchain4j", name = "langchain4j-kotlin" }
 langchain4j-openai = { group = "dev.langchain4j", name = "langchain4j-open-ai" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
-mokksy-openai = { group = "me.kpavlov.aimocks", name = "ai-mocks-openai", version.ref = "mokksy" }
+mokksy-openai = { group = "dev.mokksy.aimocks", name = "ai-mocks-openai", version.ref = "ai-mocks" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 spring-ai-bom = { group = "org.springframework.ai", name = "spring-ai-bom", version.ref = "spring-ai" }
 spring-ai-client-chat = { group = "org.springframework.ai", name = "spring-ai-client-chat", version.ref = "spring-ai" }
