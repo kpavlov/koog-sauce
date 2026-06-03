@@ -23,6 +23,7 @@ tasks.withType<KotlinCompile>().configureEach {
         jvmTarget = JvmTarget.JVM_17
         languageVersion = KOTLIN_2_1
         apiVersion = KOTLIN_2_1
+        optIn.add("kotlin.time.ExperimentalTime")
         freeCompilerArgs =
             listOf(
                 "-Wextra",

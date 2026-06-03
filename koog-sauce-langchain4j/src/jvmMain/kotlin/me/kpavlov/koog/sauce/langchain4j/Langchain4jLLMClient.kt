@@ -4,9 +4,11 @@ import ai.koog.agents.core.tools.ToolDescriptor
 import ai.koog.prompt.dsl.ModerationResult
 import ai.koog.prompt.dsl.Prompt
 import ai.koog.prompt.executor.clients.LLMClient
+import ai.koog.prompt.llm.LLMProvider
 import ai.koog.prompt.llm.LLModel
 import ai.koog.prompt.message.Message
 import ai.koog.prompt.message.ResponseMetaInfo
+import ai.koog.prompt.streaming.StreamFrame
 import dev.langchain4j.data.message.AiMessage
 import dev.langchain4j.data.message.SystemMessage
 import dev.langchain4j.data.message.UserMessage
@@ -19,7 +21,7 @@ import dev.langchain4j.model.chat.StreamingChatModel
 import dev.langchain4j.model.chat.request.ChatRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 
 /**
  * A client implementation for interacting with an AI language model via Langchain4j.
@@ -28,7 +30,7 @@ import kotlinx.datetime.Clock
  * This class is designed to integrate with a Langchain4j ChatLanguageModel for handling requests and responses
  * to and from the underlying large language model.
  *
- * Implements the `LLMClient` interface, offering both standard and streaming-based execution methods.
+ * Implements the `LLMClient` abstract class, offering both standard and streaming-based execution methods.
  *
  * @param chatModel The Langchain4j chat model used to facilitate communication with the LLM service.
  * @author Konstantin Pavlov
@@ -36,13 +38,17 @@ import kotlinx.datetime.Clock
 public class Langchain4jLLMClient(
     private val chatModel: ChatModel? = null,
     private val streamingChatModel: StreamingChatModel? = null
-) : LLMClient {
+) : LLMClient() {
 
     init {
         require(chatModel != null || streamingChatModel != null) {
             "Either chatModel or streamingChatModel must be provided"
         }
     }
+
+    override fun llmProvider(): LLMProvider = Langchain4jProvider
+
+    override fun close() {}
 
     override suspend fun execute(
         prompt: Prompt,
@@ -75,47 +81,41 @@ public class Langchain4jLLMClient(
 
     override fun executeStreaming(
         prompt: Prompt,
-        model: LLModel
-    ): Flow<String> {
+        model: LLModel,
+        tools: List<ToolDescriptor>
+    ): Flow<StreamFrame> {
         requireNotNull(streamingChatModel) { "StreamingChatModel must be provided" }
 
         return streamingChatModel.chatFlow {
             convertToChatRequest(prompt, this)
         }.mapNotNull {
             if (it is StreamingChatModelReply.PartialResponse) {
-                it.partialResponse
+                StreamFrame.TextDelta(it.partialResponse)
             } else {
                 null
             }
         }
+    }
+
+    private companion object {
+        private object Langchain4jProvider : LLMProvider("langchain4j", "LangChain4j")
     }
 }
 
 private fun convertToChatRequest(prompt: Prompt, builder: ChatRequestBuilder): ChatRequest {
     builder.messages.addAll(prompt.messages.mapNotNull { message ->
         when (message) {
-            is Message.System -> {
-                SystemMessage(message.content)
-            }
+            is Message.System -> SystemMessage(message.content)
 
-            is Message.User -> {
-                UserMessage(message.content)
-            }
+            is Message.User -> UserMessage(message.content)
 
-            is Message.Assistant -> {
-                AiMessage(message.content)
-            }
+            is Message.Assistant -> AiMessage(message.content)
 
-            is Message.Tool.Call -> {
-                // In Langchain4j, tool calls are part of AiMessage with tool execution requests
-                // This is a simplified implementation as Langchain4j's API might differ
-                AiMessage(message.content)
-            }
+            is Message.Tool.Call -> AiMessage(message.content)
 
-            is Message.Tool.Result -> {
-                // For now, we'll skip tool results as they're not critical for the test
-                null
-            }
+            is Message.Tool.Result -> null
+
+            is Message.Reasoning -> null
         }
     })
     return builder.build()
