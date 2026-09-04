@@ -16,7 +16,7 @@ ai-mocks = "0.9.0"
 mockk = "1.14.11"
 nexus-publish = "2.0.0"
 spring-ai = "1.1.8"
-slf4j = "2.0.18"
+slf4j = "2.0.19"
 spotless = "8.10.1"
 openai-kotlin = "4.1.0"
 
